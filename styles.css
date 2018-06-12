@@ -39,6 +39,18 @@ body {
   background-color: #E98A15;
 }
 
+#remove-button {
+  color: #FF6B6B;
+  border: 1px solid #FF6B6B;
+  border-radius: .25rem;
+  padding: 1px 10px;
+}
+
+#remove-button:hover {
+  color: white;
+  background-color: #FF6B6B;
+}
+
 #save-button {
   color: #88AB75;
   border: 1px solid #88AB75;
@@ -49,6 +61,18 @@ body {
 #save-button:hover {
   color: white;
   background-color: #88AB75;
+}
+
+#close-button {
+  color: #264653;
+  border: 1px solid #264653;
+  border-radius: .25rem;
+  padding: 1px 10px;
+}
+
+#close-button:hover {
+  color: white;
+  background-color: #264653;
 }
 
 .controls-wrapper {

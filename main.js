@@ -2,6 +2,23 @@ const mainWrapperElement = document.getElementById("main-wrapper");
 const addButtonElement = document.getElementById("add-button");
 let nextNoteId;
 
+const display = () => {
+  const keysArr = Object.keys(localStorage).filter((key) => {
+    return key.slice(0,3) == ("sn-")
+  });
+  
+  if (keysArr.length == 0) {
+    nextNoteId = 1;
+  } else {
+    const lastId = parseInt(keysArr[keysArr.length - 1].slice(3));
+    nextNoteId = lastId + 1;
+    keysArr.map(function(key) {
+                  const objValue = JSON.parse(localStorage.getItem(key));
+                  append(key.slice(3), objValue.noteTitle, objValue.notes)
+                }, localStorage);
+  }
+}
+
 const save = (id) => {
   const noteTitle = document.getElementById('title-' + id).value;
   const notes = document.getElementById('notes-' + id).value;
@@ -14,6 +31,11 @@ const add = () => {
   append(nextNoteId, '', '')
 }
 
+const remove = (id) => {
+  const noteElement = document.getElementById("notes-wrapper-" + id);
+  noteElement.parentNode.removeChild(noteElement);
+  localStorage.removeItem("sn-" + id);
+}
 
 const append = (id, noteTitle, notes) => {
   const notesWrapper = `<div id="notes-wrapper-${id}" class="notes-wrapper">
@@ -33,3 +55,4 @@ const append = (id, noteTitle, notes) => {
   mainWrapperElement.insertBefore(divWrapperElement, addButtonElement);
 }
 
+display();
