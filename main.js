@@ -3,7 +3,7 @@ const addButtonElement = document.getElementById("add-button");
 const searchElement = document.getElementById("search");
 let nextNoteId;
 
-// displays notes when first load or when user searches
+// gets called when page first loads or when user filters notes by title
 const display = (searchTerm) => {
   // clear all notes
   while (notesWrapperElement.firstChild) {
@@ -42,10 +42,11 @@ const search = () => {
 }
 
 const save = (id) => {
-  const noteTitle = document.getElementById('title-' + id).value;
-  const notes = document.getElementById('notes-' + id).value;
+  const noteTitle = document.getElementById('title-' + id).value.trim();
+  const notes = document.getElementById('notes-' + id).value.trim();
   if (!(noteTitle == '' && notes == '')) {
     localStorage.setItem("sn-" + id, JSON.stringify({noteTitle: noteTitle, notes: notes}));
+    // hide save button to cue users that note has been saved
     const saveButtonElement = document.getElementById("save-button-" + id);
     saveButtonElement.style.display = "none";
   }
@@ -57,14 +58,14 @@ const saveAll = () => {
   for (let i = 0; i < notesWrapperElements.length; i++) {
     const id = parseInt(notesWrapperElements[i].id.slice(14));
     save(id);
+    // hide save button to cue users that note has been saved
     const saveButtonElement = document.getElementById("save-button-" + id);
     saveButtonElement.style.display = "none";
   };
 }
 
-// shows save button upon input
-// serves as a user cue that changes have been made
 const showSave = (id) => {
+  // shows save button upon input to cue users that there are unsaved changes
   const saveButtonElement = document.getElementById("save-button-" + id);
   saveButtonElement.style.display = "block";
 }
@@ -80,9 +81,9 @@ const remove = (id) => {
   localStorage.removeItem("sn-" + id);
 }
 
-// appends notes on initial load or when user saves new notes
+// gets called when page first loads or when user adds new notes
 const append = (id, noteTitle, notes) => {
-  // standard noteWrapper template
+  // noteWrapper template
   const notesWrapper = `<div id="notes-wrapper-${id}" class="notes-wrapper">
                          <div class="content-wrapper">
                           <input id="title-${id}" class="notes-title" value="${noteTitle}" oninput="showSave(${id})" placeholder="title..."></br>
