@@ -18,6 +18,13 @@ body {
   height: 100px;
 }
 
+.header input {
+  border-radius: 10px;
+  height: 15px;
+  border: 1px lightgrey solid;
+  padding: 3px 10px;
+}
+
 .logo {
   font-family: 'Patrick Hand', cursive;
   color: white;
@@ -39,35 +46,29 @@ body {
 }
 
 #add-button {
-  color: #264653;
-  border: 1px solid #264653;
-  border-radius: .25rem;
-  padding: 5px 10px;
-  outline: none;
-}
-
-#add-button:hover {
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
   color: white;
+  border: 1px solid white;
   background-color: #E98A15;
 }
 
-#remove-button {
-  color: #FF6B6B;
-  border: 1px solid #FF6B6B;
-  border-radius: .25rem;
-  padding: 1px 10px;
+#add-button:hover {
+  transform: scale(1.1);
 }
 
-#remove-button:hover {
-  color: white;
-  background-color: #FF6B6B;
+.controls-wrapper button {
+  border-radius: .25rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 #save-button {
   color: #88AB75;
   border: 1px solid #88AB75;
-  border-radius: .25rem;
-  padding: 1px 10px;
 }
 
 #save-button:hover {
@@ -78,13 +79,21 @@ body {
 #close-button {
   color: #264653;
   border: 1px solid #264653;
-  border-radius: .25rem;
-  padding: 1px 10px;
 }
 
 #close-button:hover {
   color: white;
   background-color: #264653;
+}
+
+#remove-button {
+  color: #FF6B6B;
+  border: 1px solid #FF6B6B;
+}
+
+#remove-button:hover {
+  color: white;
+  background-color: #FF6B6B;
 }
 
 .controls-wrapper {
@@ -93,17 +102,22 @@ body {
   justify-content: space-between;
 }
 
+.content-wrapper input, .content-wrapper textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: lightgrey 1px solid;
+  padding: 5px 5px;
+}
+
 .content-wrapper input {
   margin-bottom: 10px;
   width: 100%;
-  box-sizing: border-box;
 }
 
-textarea {
+.content-wrapper textarea {
   background-color: white;
   resize: none;
-  width: 100%;
-  box-sizing: border-box; 
 }
 
 #main-wrapper {
@@ -116,4 +130,5 @@ textarea {
   margin-bottom: 20px;
   padding: 20px;
   display: inline-block;
+  border-radius: 5px;
 }
