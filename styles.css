@@ -1,6 +1,11 @@
 body {
   background-color: #264653;
   margin: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
 }
 
 .header {
@@ -17,11 +22,11 @@ body {
   color: white;
 }
 
-.main-wrapper {
+#main-wrapper {
   padding: 20px 20px;
 }
 
-.add-notes-button {
+#add-button {
   color: #264653;
   border: 1px solid #264653;
   border-radius: .25rem;
@@ -29,11 +34,45 @@ body {
   outline: none;
 }
 
-textarea {
-  background-color: white;
-
+#add-button:hover {
+  color: white;
+  background-color: #E98A15;
 }
 
-.notes {
-  
+#save-button {
+  color: #88AB75;
+  border: 1px solid #88AB75;
+  border-radius: .25rem;
+  padding: 1px 10px;
+}
+
+#save-button:hover {
+  color: white;
+  background-color: #88AB75;
+}
+
+.controls-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  background-color: white;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.notes-wrapper {
+  width: 200px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
 }
