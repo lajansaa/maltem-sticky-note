@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Patrick+Hand|Roboto" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <title>Sticky Notes</title>
 </head>
 <body>
-  
+  <div class="header">
+    <h1 class="logo">Sticky Notes</h1>
+    <div class="search-bar">
+      <input type="text" name="search"><i class="fas fa-search"></i>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <div id="notes-wrapper"></div>
+    <button class="add-notes-button" onclick="addNotes()">Add Notes</button><br />
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>

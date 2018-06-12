@@ -1,0 +1,39 @@
+body {
+  background-color: #264653;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #E98A15;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-family: 'Patrick Hand', cursive;
+  color: white;
+}
+
+.main-wrapper {
+  padding: 20px 20px;
+}
+
+.add-notes-button {
+  color: #264653;
+  border: 1px solid #264653;
+  border-radius: .25rem;
+  padding: 5px 10px;
+  outline: none;
+}
+
+textarea {
+  background-color: white;
+
+}
+
+.notes {
+  
+}
