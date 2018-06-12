@@ -11,14 +11,15 @@ const display = (searchTerm) => {
   }
   // filter out only sticky notes (sn) related key-value pairs
   // sort by order of creation (i.e. ascending index)
-  const keysArr = Object.keys(localStorage).filter((key) => {
-                                              return key.slice(0,3) == ("sn-")
-                                            })
-                                           .sort((e1, e2) => { 
-                                              const first = parseInt(e1.slice(3));
-                                              const second = parseInt(e2.slice(3))
-                                              return first - second;
-                                            });
+  const keysArr = Object.keys(localStorage)
+                        .filter((key) => {
+                           return key.slice(0,3) == ("sn-")
+                         })
+                        .sort((e1, e2) => { 
+                           const first = parseInt(e1.slice(3));
+                           const second = parseInt(e2.slice(3));
+                           return first - second;
+                         });
   
   if (keysArr.length == 0) {
     nextNoteId = 1;
@@ -45,10 +46,31 @@ const save = (id) => {
   const notes = document.getElementById('notes-' + id).value;
   if (!(noteTitle == '' && notes == '')) {
     localStorage.setItem("sn-" + id, JSON.stringify({noteTitle: noteTitle, notes: notes}));
+    const saveButtonElement = document.getElementById("save-button-" + id);
+    saveButtonElement.style.display = "none";
   }
 }
 
+const saveAll = () => {
+  // loop through all notesWrapper elements currently in DOM to get id
+  const notesWrapperElements = document.getElementsByClassName("notes-wrapper");
+  for (let i = 0; i < notesWrapperElements.length; i++) {
+    const id = parseInt(notesWrapperElements[i].id.slice(14));
+    save(id);
+    const saveButtonElement = document.getElementById("save-button-" + id);
+    saveButtonElement.style.display = "none";
+  };
+}
+
+// shows save button upon input
+// serves as a user cue that changes have been made
+const showSave = (id) => {
+  const saveButtonElement = document.getElementById("save-button-" + id);
+  saveButtonElement.style.display = "block";
+}
+
 const add = () => {
+  nextNoteId++;
   append(nextNoteId, '', '')
 }
 
@@ -63,13 +85,12 @@ const append = (id, noteTitle, notes) => {
   // standard noteWrapper template
   const notesWrapper = `<div id="notes-wrapper-${id}" class="notes-wrapper">
                          <div class="content-wrapper">
-                          <input id="title-${id}" class="notes-title" value="${noteTitle}" placeholder="title..."></br>
-                          <textarea autofocus id="notes-${id}" class="notes" rows="5" placeholder="notes...">${notes}</textarea>
+                          <input id="title-${id}" class="notes-title" value="${noteTitle}" oninput="showSave(${id})" placeholder="title..."></br>
+                          <textarea autofocus id="notes-${id}" class="notes" rows="5" oninput="showSave(${id})" placeholder="notes...">${notes}</textarea>
                          </div>
                          <div class="controls-wrapper">
-                          <button id="save-button" onclick="save(${id})">Save</button>
-                          <button id="close-button" onclick="close()">Close</button>
-                          <button id="remove-button" onclick="remove(${id})">Delete</button>
+                          <button id="save-button-${id}" class="save-button" onclick="save(${id})">Save</button>
+                          <button id="remove-button-${id}" class="remove-button" onclick="remove(${id})">Delete</button>
                          </div>
                         </div>
                        `

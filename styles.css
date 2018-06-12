@@ -43,20 +43,40 @@ body {
 
 #main-wrapper {
   padding: 20px 20px;
+  text-align: center;
 }
 
-#add-button {
+.notes-wrapper {
+  width: 200px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.buttons-wrapper button {
   border-radius: 10px;
   padding: 10px 15px;
   font-size: 1rem;
   cursor: pointer;
+  margin-right: 10px
+}
+
+#add-button:hover, #save-all-button:hover {
+  transform: scale(1.1);
+}
+
+#add-button {
   color: white;
   border: 1px solid white;
   background-color: #E98A15;
 }
 
-#add-button:hover {
-  transform: scale(1.1);
+#save-all-button {
+  color: white;
+  border: 1px solid white;
+  background-color: #88AB75;
 }
 
 .controls-wrapper button {
@@ -66,32 +86,23 @@ body {
   cursor: pointer;
 }
 
-#save-button {
+.save-button {
   color: #88AB75;
   border: 1px solid #88AB75;
+  display: none;
 }
 
-#save-button:hover {
+.save-button:hover {
   color: white;
   background-color: #88AB75;
 }
 
-#close-button {
-  color: #264653;
-  border: 1px solid #264653;
-}
-
-#close-button:hover {
-  color: white;
-  background-color: #264653;
-}
-
-#remove-button {
+.remove-button {
   color: #FF6B6B;
   border: 1px solid #FF6B6B;
 }
 
-#remove-button:hover {
+.remove-button:hover {
   color: white;
   background-color: #FF6B6B;
 }
@@ -99,7 +110,7 @@ body {
 .controls-wrapper {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .content-wrapper input, .content-wrapper textarea {
@@ -118,17 +129,4 @@ body {
 .content-wrapper textarea {
   background-color: white;
   resize: none;
-}
-
-#main-wrapper {
-  text-align: center;
-}
-
-.notes-wrapper {
-  width: 200px;
-  background-color: white;
-  margin-bottom: 20px;
-  padding: 20px;
-  display: inline-block;
-  border-radius: 5px;
 }
