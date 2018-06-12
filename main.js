@@ -1,8 +1,13 @@
-const mainWrapperElement = document.getElementById("main-wrapper");
+const notesWrapperElement = document.getElementById("notes-wrapper");
 const addButtonElement = document.getElementById("add-button");
+const searchElement = document.getElementById("search");
 let nextNoteId;
 
-const display = () => {
+const display = (searchTerm) => {
+  while (notesWrapperElement.firstChild) {
+    notesWrapperElement.removeChild(notesWrapperElement.firstChild);
+  }
+
   const keysArr = Object.keys(localStorage).filter((key) => {
     return key.slice(0,3) == ("sn-")
   });
@@ -14,9 +19,16 @@ const display = () => {
     nextNoteId = lastId + 1;
     keysArr.map(function(key) {
                   const objValue = JSON.parse(localStorage.getItem(key));
-                  append(key.slice(3), objValue.noteTitle, objValue.notes)
+                  if (searchTerm == undefined || objValue.noteTitle == searchTerm) {
+                    append(key.slice(3), objValue.noteTitle, objValue.notes)
+                  }
                 }, localStorage);
   }
+}
+
+const search = () => {
+  const searchTerm = searchElement.value.trim();
+  display(searchTerm);
 }
 
 const save = (id) => {
@@ -52,7 +64,7 @@ const append = (id, noteTitle, notes) => {
                        `
   const divWrapperElement = document.createElement('div');
   divWrapperElement.innerHTML = notesWrapper;                            
-  mainWrapperElement.insertBefore(divWrapperElement, addButtonElement);
+  notesWrapperElement.append(divWrapperElement);
 }
 
 display();

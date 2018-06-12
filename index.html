@@ -11,10 +11,13 @@
   <div class="header">
     <h1 class="logo">Sticky Notes</h1>
     <div class="search-bar">
-      <input type="text" name="search"><i class="fas fa-search"></i>
+      <input id="search" type="text" name="search">
+      <i onclick="search()" class="fas fa-search"></i>
+      <i onclick="display()" class="fas fa-sync-alt"></i>
     </div>
   </div>
   <div id="main-wrapper">
+    <div id="notes-wrapper"></div>
     <button id="add-button" onclick="add()">Add Notes</button><br />
   </div>
   <script src="main.js"></script>

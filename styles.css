@@ -11,14 +11,26 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0 20px;
   background-color: #E98A15;
   position: sticky;
   top: 0;
+  height: 100px;
 }
 
 .logo {
   font-family: 'Patrick Hand', cursive;
+  color: white;
+  line-height: 100px;
+  margin: 0;
+}
+
+.search-bar {
+  line-height: 100px;
+}
+
+.fa-search, .fa-sync-alt {
+  cursor: pointer;
   color: white;
 }
 
@@ -81,7 +93,7 @@ body {
   justify-content: space-between;
 }
 
-input {
+.content-wrapper input {
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -94,9 +106,14 @@ textarea {
   box-sizing: border-box; 
 }
 
+#main-wrapper {
+  text-align: center;
+}
+
 .notes-wrapper {
   width: 200px;
   background-color: white;
   margin-bottom: 20px;
   padding: 20px;
+  display: inline-block;
 }
